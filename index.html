@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="meu-texto">
+	<p>
+		Se hoje é o dia das crianças... Ontem eu disse: o dia da criança é o dia da mãe, dos pais, das professoras, mas também é o dia dos animais, sempre que você olha uma criança, há sempre uma figura oculta, que é um cachorro atrás. O que é algo muito importante!
+	</p>
+	<p>
+		No meu xinélo da humildade eu gostaria muito de ver o Neymar e o Ganso. Por que eu acho que.... 11 entre 10 brasileiros gostariam. Você veja, eu já vi, parei de ver. Voltei a ver, e acho que o Neymar e o Ganso têm essa capacidade de fazer a gente olhar.
+	</p>
+	<p>
+		Primeiro eu queria cumprimentar os internautas. -Oi Internautas! Depois dizer que o meio ambiente é sem dúvida nenhuma uma ameaça ao desenvolvimento sustentável. E isso significa que é uma ameaça pro futuro do nosso planeta e dos nossos países. O desemprego beira 20%, ou seja, 1 em cada 4 portugueses.
+	</p>
+  </div>
+
+  <input type="text" name="factor">
+  <div id="click">Procurar</div>
+  <script src="dist/bolder-that.js" charset="utf-8"></script>
+  <script>
+	var bolder = new BolderThat("#meu-texto");
+
+	document.querySelectorAll("#click")[0].onclick = function () {
+	    bolder.run(document.querySelectorAll("[name=factor]")[0].value);
+	};
+  </script>
+</body>
+</html>

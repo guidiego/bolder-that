@@ -1,0 +1,36 @@
+{
+  "name": "bolder-that",
+  "version": "1.0.0",
+  "description": "A micro lib to put bolder in words",
+  "main": "dist/bolder-that.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guidiego/bolder-that.git"
+  },
+  "keywords": [
+    "Javascript",
+    "ES6",
+    "ECMASCRIPT6",
+    "ecma2015",
+    "es2015",
+    "js",
+    "bolder",
+    "text",
+    "html",
+    "gulp"
+  ],
+  "author": "Guilherme Diego",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guidiego/bolder-that/issues"
+  },
+  "homepage": "https://github.com/guidiego/bolder-that#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1",
+    "gulp-uglify": "^1.4.0"
+  }
+}

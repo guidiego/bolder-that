@@ -18,7 +18,7 @@ class BolderThat {
     this._unSelect(this.lastFactor);
     this.lastFactor = factor;
     if (factor.replace(/ /g, "").length > 0) {
-      this.regExp = new RegExp(factor, "gi");
+      this.regExp = new RegExp(factor, "ig");
       this._runIntoChild(this.wrap, factor);
     }
   }
@@ -29,14 +29,20 @@ class BolderThat {
    * @param factor (string) The Atual Factor;
    */
   _runIntoChild(child, factor) {
-    for (var x = 0; x < child.length; x++) {
-      if (child[x].children.length <= 0) {
-        var html = child[x].innerText;
-        this.selector.innerHTML = factor;
-        html = html.replace(this.regExp, this.selector.outerHTML);
-        child[x].innerHTML = html;
+    for (var i = 0; i < child.length; i++) {
+      if (child[i].children.length <= 0) {
+        var html  = child[i].innerText,
+            words = [],
+            temp  = html.match(this.regExp).map(e => words.indexOf(e) < 0 && words.push(e));
+            console.log(words);
+        for (var x = 0; x < words.length; x++){
+          this.selector.innerText = words[x];
+          html = html.replace(words[x], this.selector.outerHTML);
+        }
+
+        child[i].innerHTML = html;
       } else {
-        this._runIntoChild(child[x].children, factor);
+        this._runIntoChild(child[i].children, factor);
       }
     }
   }

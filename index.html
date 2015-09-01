@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <style media="screen">
+    .red{
+      font-weight: bold;
+      color: red;
+    }
+  </style>
 </head>
 <body>
   <div id="meu-texto">
@@ -21,10 +27,10 @@
   <div id="click">Procurar</div>
   <script src="dist/bolder-that.js" charset="utf-8"></script>
   <script>
-	var bolder = new BolderThat("#meu-texto");
+	var bolder = new BolderThat("#meu-texto", "span.red");
 
-	document.querySelectorAll("#click")[0].onclick = function () {
-	    bolder.run(document.querySelectorAll("[name=factor]")[0].value);
+	document.querySelectorAll("[name=factor]")[0].onkeyup = function () {
+	    bolder.run(this.value);
 	};
   </script>
 </body>

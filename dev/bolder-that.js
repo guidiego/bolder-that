@@ -15,7 +15,7 @@ class BolderThat {
    * @param factor (string) : The word that you want to Bold
    */
   run(factor){
-    this._unSelect(this.lastFactor);
+		this._unSelect();
     this.lastFactor = factor;
     if (factor.replace(/ /g, "").length > 0) {
       this.regExp = new RegExp(factor, "ig");
@@ -31,14 +31,14 @@ class BolderThat {
   _runIntoChild(child, factor) {
     for (var i = 0; i < child.length; i++) {
       if (child[i].children.length <= 0) {
-        var html  = child[i].innerText,
-            words = [],
-            temp  = html.match(this.regExp).map(e => words.indexOf(e) < 0 && words.push(e));
-            console.log(words);
-        for (var x = 0; x < words.length; x++){
-          this.selector.innerText = words[x];
-          html = html.replace(words[x], this.selector.outerHTML);
-        }
+        var html   = child[i].innerText,
+						_clazz = this;
+
+				html = html.replace(this.regExp, function (v) {
+					console.log(_clazz.regExp);
+					_clazz.selector.innerHTML = v;
+					return _clazz.selector.outerHTML;
+				})
 
         child[i].innerHTML = html;
       } else {
@@ -63,15 +63,10 @@ class BolderThat {
     return element;
   }
 
-  _unSelect(factor) {
-    this.selector.innerHTML = factor;
-    var old    = this.selector.outerHTML,
-        regExp = new RegExp(old, "g");
-
-    for (var x = 0; x < this.wrap.length; x++) {
-    	var html   = this.wrap[x].innerHTML;
-    	html = html.replace(regExp, factor);
-    	this.wrap[x].innerHTML = html;
-    }
-  }
+	_unSelect() {
+ 		this.selector.innerHTML = "x";
+	  var s   = this.selector.outerHTML.split("x"),
+				reg = new RegExp(s[0]+"|"+s[1], "g");
+		for (var x = 0; x < this.wrap.length; x++) this.wrap[x].innerHTML =	this.wrap[x].innerHTML.replace(reg, "");
+ 	}
 }
